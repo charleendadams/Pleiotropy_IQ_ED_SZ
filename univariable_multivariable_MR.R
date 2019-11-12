@@ -439,7 +439,7 @@ head(all_res[,c("Method","outcome","exposure","nsnp","b","se","or", "or_lci95",
 write.csv(all_res,"combined_results_Hill_SZ.csv")
 
 #########################################################################
-##### MVMR of IQ and EduAge on SZ
+##### Multivariable MR of intelligence and EduAge on SZ
 #########################################################################
 setwd("C:/Users/charl/Dropbox/COH/IQ_school_sz/multi")
 library(ggplot2)
@@ -473,11 +473,6 @@ mvdat <- mv_harmonise_data(exposure_dat, outcome_dat)
 #Finally, perform the multivariable MR analysis
 res <- mv_multiple(mvdat)
 res
-res$b=as.numeric(res$b)
-res$or=exp(res$b)
-res$se=as.numeric(res$se)
-res$lo_CI=(res$b)-1.96*(res$se)
-res$up_CI=res$b+1.96*res$se
 write.csv(res,'multi_res.csv')
 
 #########################################################################
